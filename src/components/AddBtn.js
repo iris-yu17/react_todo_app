@@ -1,23 +1,32 @@
 import React, { useState, useEffect } from "react";
+import $ from "jquery";
 
 function AddBtn(props) {
-  const { inputValue, todoArray, settodoArray } = props;
+  const { inputValue, todoArray, setTodoArray, setInputValue } = props;
 
   function updateTodoList() {
-    const newItemToBeAdd = {
-      content: inputValue,
-      status: 0,
-      id: Date.now(),
-    };
+    if (inputValue !== "") {
+      const newItemToBeAdd = {
+        content: inputValue,
+        status: 0,
+        id: Date.now(),
+      };
 
-    console.log("todoArray", todoArray);
+      let newTodoArray = todoArray;
+      newTodoArray.push(newItemToBeAdd);
+      setTodoArray(newTodoArray);
+      setInputValue("");
+    }
+  }
 
-    // let newTodoArray =
-    //   JSON.stringify(todoArray) + JSON.stringify(newItemToBeAdd);
+  function addBtnMouseDownEffect() {
+    $("#addBtn").removeClass("add_btn");
+    $("#addBtn").addClass("add_btn_clicked");
+  }
 
-    // console.log("newItemToBeAdd", newItemToBeAdd);
-
-    // console.log("newTodoArray", JSON.parse(newTodoArray));
+  function addBtnMouseUpEffect() {
+    $("#addBtn").removeClass("add_btn_clicked");
+    $("#addBtn").addClass("add_btn");
   }
 
   return (
@@ -25,7 +34,14 @@ function AddBtn(props) {
       <button
         id="addBtn"
         className="add_btn"
-        onClick={() => {
+        // onClick={() => {
+        //   updateTodoList();
+        // }}
+        onMouseDown={() => {
+          addBtnMouseDownEffect();
+        }}
+        onMouseUp={() => {
+          addBtnMouseUpEffect();
           updateTodoList();
         }}
       >

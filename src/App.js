@@ -16,13 +16,20 @@ function App() {
     this.id = id;
   }
 
-  const [todoArray, settodoArray] = useState([dotoEx1, dotoEx2, dotoEx3]);
+  const [todoArray, setTodoArray] = useState([dotoEx1, dotoEx2, dotoEx3]);
   const [inputValue, setInputValue] = useState("");
 
   console.log(todoArray);
 
+  function addBtnMouseUpEffect() {
+    $("#addBtn").removeClass("add_btn_clicked");
+    $("#addBtn").addClass("add_btn");
+  }
+
   return (
-    <div>
+    <div onMouseUp={()=>{
+      addBtnMouseUpEffect();
+    }}>
       <div className="container">
         <div className="screen">
           <div className="title">Todo List</div>
@@ -31,7 +38,8 @@ function App() {
             <AddBtn
               inputValue={inputValue}
               todoArray={todoArray}
-              settodoArray={settodoArray}
+              setTodoArray={setTodoArray}
+              setInputValue={setInputValue}
             />
           </div>
 
