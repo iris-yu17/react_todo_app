@@ -43,7 +43,7 @@ function App() {
             />
           </div>
 
-          <List todoArray={todoArray} />
+          <List todoArray={todoArray} setTodoArray={setTodoArray}/>
 
           <div className="sort">
             <div className="sort_btn current_sort" id="all_item">
