@@ -196,6 +196,14 @@ body {
   font-size: 14px;
 }
 
+.fa-trash-delete {
+  svg {
+    color: #d3d3d3;
+    /* color: rgb(107, 143, 243); */
+    font-size: 14px;
+  }
+}
+
 .sort {
   display: flex;
   justify-content: space-between;
