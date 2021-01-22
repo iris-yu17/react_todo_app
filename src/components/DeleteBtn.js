@@ -14,11 +14,12 @@ function DeleteBtn(props) {
     //　改變狀態
     setTimeout(() => {
        setTodoArray(updatedArray);
+       setDelState(0);
     }, 100);
    
   }
 
-  function delBtnMouseDownEffect() {
+  function delBtnClickedStyleChange() {
     setDelState(1);
   }
 
@@ -28,7 +29,7 @@ function DeleteBtn(props) {
         <div
           className="delete"
           onClick={() => {
-            delBtnMouseDownEffect();
+            delBtnClickedStyleChange();
             deleteItem();
           }}
         >
@@ -45,7 +46,7 @@ function DeleteBtn(props) {
             deleteItem();
           }}
           onMouseDown={() => {
-            delBtnMouseDownEffect();
+            delBtnClickedStyleChange();
           }}
         >
           <div className="fa-trash-delete">
