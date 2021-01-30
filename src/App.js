@@ -19,20 +19,14 @@ function App() {
 
   const [todoArray, setTodoArray] = useState([dotoEx1, dotoEx2, dotoEx3]);
   const [inputValue, setInputValue] = useState("");
-  const [currentPage, setCurrentPage] = useState(1); //1:all, 2:complete, 3:incomplete
+  const [currentPage, setCurrentPage] = useState(0); //0:all, 1:complete, 2:incomplete
 
   console.log(todoArray);
+  console.log(currentPage)
 
   function addBtnMouseUpEffect() {
     $("#addBtn").removeClass("add_btn_clicked");
     $("#addBtn").addClass("add_btn");
-  }
-
-  function changeSortBtnStyle(e) {
-    $(this).parent().addClass("current_sort");
-    // $(this).siblings().removeClass("current_sort");
-    console.log($(this).parent())
-    console.log(e.target);
   }
 
   return (
@@ -61,32 +55,26 @@ function App() {
           />
 
           <div className="sort">
-            <div
-              className="sort_btn current_sort"
-              id="test1"
-              onClick={(e) => {
-                changeSortBtnStyle(e);
-              }}
-            >
-              <SortBtn text={"All"} />
-            </div>
-            <div
-              className="sort_btn"
-              id="test2"
-              onClick={(e) => {
-                changeSortBtnStyle(e);
-              }}
-            >
-              <SortBtn text={"Complete"} />
-            </div>
-            <div
-              className="sort_btn"
-              onClick={(e) => {
-                changeSortBtnStyle(e);
-              }}
-            >
-              <SortBtn text={"Incomplete"} />
-            </div>
+            <SortBtn
+              id={"allBtn"}
+              text={"All"}
+              classlist={"allBtn"}
+              setCurrentPage={setCurrentPage}
+            />
+
+            <SortBtn
+              id={"completeBtn"}
+              text={"Complete"}
+              classlist={"completeBtn"}
+              setCurrentPage={setCurrentPage}
+            />
+
+            <SortBtn
+              id={"incompleteBtn"}
+              text={"Incomplete"}
+              classlist={"incompleteBtn"}
+              setCurrentPage={setCurrentPage}
+            />
           </div>
         </div>
       </div>

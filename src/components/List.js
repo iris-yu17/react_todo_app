@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Item from "./Item";
 
 function List(props) {
-  const { todoArray, setTodoArray } = props;
+  const { todoArray, setTodoArray, currentPage } = props;
   const [item, setItem] = useState([]);
 
   return (
