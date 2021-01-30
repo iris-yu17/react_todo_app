@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import Input from "./components/Input";
 import AddBtn from "./components/AddBtn";
 import List from "./components/List";
+import SortBtn from "./components/SortBtn";
 import $ from "jquery";
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
 
   const [todoArray, setTodoArray] = useState([dotoEx1, dotoEx2, dotoEx3]);
   const [inputValue, setInputValue] = useState("");
+  const [currentPage, setCurrentPage] = useState(1); //1:all, 2:complete, 3:incomplete
 
   console.log(todoArray);
 
@@ -26,10 +28,19 @@ function App() {
     $("#addBtn").addClass("add_btn");
   }
 
+  function changeSortBtnStyle(e) {
+    $(this).parent().addClass("current_sort");
+    // $(this).siblings().removeClass("current_sort");
+    console.log($(this).parent())
+    console.log(e.target);
+  }
+
   return (
-    <div onMouseUp={()=>{
-      addBtnMouseUpEffect();
-    }}>
+    <div
+      onMouseUp={() => {
+        addBtnMouseUpEffect();
+      }}
+    >
       <div className="container">
         <div className="screen">
           <div className="title">Todo List</div>
@@ -43,17 +54,38 @@ function App() {
             />
           </div>
 
-          <List todoArray={todoArray} setTodoArray={setTodoArray}/>
+          <List
+            todoArray={todoArray}
+            setTodoArray={setTodoArray}
+            currentPage={currentPage}
+          />
 
           <div className="sort">
-            <div className="sort_btn current_sort" id="all_item">
-              All
+            <div
+              className="sort_btn current_sort"
+              id="test1"
+              onClick={(e) => {
+                changeSortBtnStyle(e);
+              }}
+            >
+              <SortBtn text={"All"} />
             </div>
-            <div className="sort_btn" id="completed_item">
-              Complete
+            <div
+              className="sort_btn"
+              id="test2"
+              onClick={(e) => {
+                changeSortBtnStyle(e);
+              }}
+            >
+              <SortBtn text={"Complete"} />
             </div>
-            <div className="sort_btn" id="incomplete_item">
-              Incomplete
+            <div
+              className="sort_btn"
+              onClick={(e) => {
+                changeSortBtnStyle(e);
+              }}
+            >
+              <SortBtn text={"Incomplete"} />
             </div>
           </div>
         </div>
