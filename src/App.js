@@ -21,8 +21,9 @@ function App() {
   const [inputValue, setInputValue] = useState("");
   const [currentPage, setCurrentPage] = useState(0); //0:all, 1:complete, 2:incomplete
 
-  console.log(todoArray);
-  console.log(currentPage)
+  console.log("app");
+  // console.log(todoArray);
+  // console.log(currentPage)
 
   function addBtnMouseUpEffect() {
     $("#addBtn").removeClass("add_btn_clicked");
